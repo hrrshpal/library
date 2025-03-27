@@ -85,4 +85,3 @@ function displayBooks(arr){
 
 
 displayBooks(myLibrary);
-console.log(myLibrary)
