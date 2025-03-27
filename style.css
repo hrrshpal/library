@@ -1,0 +1,60 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height:100%;
+    width: 100%;
+}
+
+#container{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin:0;
+    background-color: #b3d9f6;
+    padding:0;
+}
+
+#heading{
+    text-align: center;
+    background-color: #35A7FF;
+    height: 150px;
+    margin: 0; 
+    line-height: 150px;
+    color: white;
+    font-size: 100px;
+}
+
+#books{
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    flex-wrap: wrap;
+    gap: 30px;
+    /* min-height: 480px; */
+}
+
+#footer{
+    background-color: rgb(144, 139, 139);
+    color: white;
+    height:90px;
+    text-align: center;
+    line-height: 90px;
+}
+
+#card{
+    height: 300px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    width: 250px;
+    background-color: #ffe74c;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: 20px auto;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
+
+#card:hover{
+    transform: scale(1.05);
+}
