@@ -10,7 +10,31 @@
     <div id="container">
         <h1 id="heading">Library</h1>
         <div id="controls">
-            <button id="addBtn">+ New Book</button>
+
+            <dialog>
+                <form action="#" method="post">
+                    <fieldset>
+                        <legend>Add New Book</legend>
+
+                        <label for="title">Title: </label>
+                        <input type="text" name="title" id="title" placeholder="Book title" required>
+
+                        <label for="author">Author: </label>
+                        <input type="text" name="author" id="author" placeholder="Author's name" required>
+
+                        <label for="pages">Pages: </label>
+                        <input type="number" name="pages" id="pages" required>
+
+                        <label for="read">Read: 
+                            <input type="checkbox" name="read" id="read">
+                        </label>
+                        <button autofocus type="submit" id="addBook">Add Book</button>
+                        <button id="closeDialog">Close</button>
+                    </fieldset>
+                </form>
+            </dialog>
+
+            <button id="addBtn">+ Add New Book</button>
         </div>
         <div id="books"></div>
         <div id="footer"> &copy;Library</div>

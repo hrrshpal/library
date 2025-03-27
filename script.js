@@ -1,4 +1,4 @@
-const myLibrary = []
+let myLibrary = []
 
 function Book(id, title, author, pages, read){
     this.id = id;
@@ -6,22 +6,16 @@ function Book(id, title, author, pages, read){
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info = function(){
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${(read === true ? "read" : "not read yet")}`
-    }
 }
 
-function addBookToLibrary(title, author, pages,read){
+function addBookToLibrary(title, author, pages, read){
     const id = crypto.randomUUID();
     const book = new Book(id, title, author, pages, read)
+
+    myLibrary = []
     myLibrary.push(book)
+    displayBooks(myLibrary)
 }
-
-
-let book1 = addBookToLibrary("Harry Potter", "Ryan Gosling", 500, false)
-let book2 = addBookToLibrary("Harry Potter", "Ryan Gosling", 500, false)
-let book3 = addBookToLibrary("Harry Potter", "Ryan Gosling", 500, false)
-let book4 = addBookToLibrary("Harry Potter", "Ryan Gosling", 500, false)
 
 
 function displayBooks(arr){
@@ -53,22 +47,26 @@ function displayBooks(arr){
         details.setAttribute("id", "details")
         
         // Setting Title & ID
-        const title = document.createElement("h1")
+        const title = document.createElement("h2")
         title.setAttribute("id", "title")
         title.setAttribute("data-bookid", `${book.id}`)
         title.textContent = book.title;
+        title.style.color = "Black"
         // Setting Author
-        const author  = document.createElement("h3")
+        const author  = document.createElement("h4")
         author.setAttribute("id", "author")
-        author.textContent = book.author;
+        author.textContent = `by ${book.author}`;
+        author.style.color = "#2F4F4F";
         // Setting Pages
         const pages = document.createElement("p")
         pages.setAttribute("id", "pages")
-        pages.textContent = book.pages;
+        pages.textContent = `${book.pages} pages`
+        pages.style.color = "grey"
         // Setting Reading Status
         const read = document.createElement("p")
         read.setAttribute("id", "read")
         read.textContent = `${(read === true ? "read" : "not read yet")}`;
+        read.style.color = "grey"
         // Appending all the properties into details div
         details.appendChild(title)
         details.appendChild(author)
@@ -84,4 +82,30 @@ function displayBooks(arr){
 }
 
 
-displayBooks(myLibrary);
+const dialog = document.querySelector("dialog")
+const addBtn = document.querySelector("#addBtn")
+const addBook = document.querySelector("#addBook")
+const closeDialog = document.querySelector("#closeDialog")
+
+addBtn.addEventListener(("click"), ()=>{
+    dialog.showModal()
+})
+
+addBook.addEventListener(("click"), ()=>{
+    dialog.close()
+})
+
+closeDialog.addEventListener(("click"), ()=>{
+    dialog.close()
+})
+
+const form = document.querySelector("form")
+form.addEventListener(("submit"), (e)=>{
+    e.preventDefault();
+    const name = document.querySelector("#title").value;
+    const author = document.querySelector("#author").value;
+    const pages = document.querySelector("#pages").value;
+    const read = document.querySelector("#read").value;
+    addBookToLibrary(name,author,pages,read)
+    form.reset();
+})
