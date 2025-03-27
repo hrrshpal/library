@@ -105,3 +105,20 @@ fieldset > button{
 fieldset > button:hover{
     background-color: rgb(45, 43, 43);
 }
+
+#readDiv{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#toggle{
+    height: 20px;
+    margin-top: 23px;
+    background-color: white;
+    border:1px solid black;
+    border-radius: 20px;
+}
+
+#toggle:hover{
+    background-color: rgb(242, 235, 235);
+}

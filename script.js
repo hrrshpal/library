@@ -8,10 +8,14 @@ function Book(id, title, author, pages, read){
     this.read = read;
 }
 
+Book.prototype.changeRead = function(){
+    console.log(this.read)
+    this.read = !this.read
+}
+
 function addBookToLibrary(title, author, pages, read){
     const id = crypto.randomUUID();
     const book = new Book(id, title, author, pages, read)
-
     myLibrary = []
     myLibrary.push(book)
     displayBooks(myLibrary)
@@ -63,15 +67,42 @@ function displayBooks(arr){
         pages.textContent = `${book.pages} pages`
         pages.style.color = "grey"
         // Setting Reading Status
+        // ReadDiv to store read and toggle
+        const readDiv = document.createElement("div")
+        readDiv.setAttribute("id", "readDiv")
+        // Read
         const read = document.createElement("p")
         read.setAttribute("id", "read")
-        read.textContent = `${(read === true ? "read" : "not read yet")}`;
+        read.textContent = book.read ? "read" : "not read yet";
         read.style.color = "grey"
+        // Toggle
+        const toggle = document.createElement("button")
+        toggle.setAttribute("id", "toggle")
+        toggle.textContent = book.read ? "unread" : "read";
+        toggle.addEventListener("click", () => {
+            if(book.read === true){
+                read.textContent = "not read yet"
+                toggle.textContent = "read"
+                toggle.style.backgroundColor = "black"
+                toggle.style.color = "white"
+                book.changeRead()
+            }else{
+                read.textContent = "read";
+                toggle.textContent = "unread"
+                toggle.style.backgroundColor = "white"
+                toggle.style.color = "black"
+                book.changeRead()
+            }
+        })
+        
+        readDiv.appendChild(read)
+        readDiv.appendChild(toggle)
+
         // Appending all the properties into details div
         details.appendChild(title)
         details.appendChild(author)
         details.appendChild(pages)
-        details.appendChild(read)
+        details.appendChild(readDiv)
 
         // Appending details into Card
         card.appendChild(details)
@@ -105,7 +136,7 @@ form.addEventListener(("submit"), (e)=>{
     const name = document.querySelector("#title").value;
     const author = document.querySelector("#author").value;
     const pages = document.querySelector("#pages").value;
-    const read = document.querySelector("#read").value;
+    const read = (document.querySelector("#read").value === "on" ? true : false);
     addBookToLibrary(name,author,pages,read)
     form.reset();
 })
