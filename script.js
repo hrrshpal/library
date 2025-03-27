@@ -7,7 +7,7 @@ function Book(id, title, author, pages, read){
     this.pages = pages;
     this.read = read;
     this.info = function(){
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${(read === false ? "not read yet" : "read")}`
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${(read === true ? "read" : "not read yet")}`
     }
 }
 
@@ -68,7 +68,7 @@ function displayBooks(arr){
         // Setting Reading Status
         const read = document.createElement("p")
         read.setAttribute("id", "read")
-        read.textContent = book.read;
+        read.textContent = `${(read === true ? "read" : "not read yet")}`;
         // Appending all the properties into details div
         details.appendChild(title)
         details.appendChild(author)
