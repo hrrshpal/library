@@ -10,16 +10,18 @@ html, body {
     margin:0;
     background-color: #b3d9f6;
     padding:0;
+    height:100%;
 }
 
 #heading{
     text-align: center;
     background-color: #35A7FF;
     height: 150px;
+    width: 100%;
     margin: 0; 
     line-height: 150px;
     color: white;
-    font-size: 100px;
+    font-size: 7vw;
 }
 
 #books{
@@ -28,15 +30,6 @@ html, body {
     margin: 30px;
     flex-wrap: wrap;
     gap: 30px;
-    min-height: 380px;
-}
-
-#footer{
-    background-color: rgb(144, 139, 139);
-    color: white;
-    height:80px;
-    text-align: center;
-    line-height: 80px;
 }
 
 #card{
@@ -67,6 +60,7 @@ html, body {
 
 #addBtn{
     padding: 10px 20px;
+    font-size:1vw;
     background-color: white;
     border: 2px solid #35A7FF ;
     border-radius: 5px;
